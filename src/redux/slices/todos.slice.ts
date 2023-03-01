@@ -5,11 +5,18 @@ interface IState {
   todos: ITodo[] | []
   item: ITodo
   showModal: boolean
+  modalItem: ITodo
 }
 
 const initialState: IState = {
   todos: [],
   item: {
+    id: 0,
+    description: '',
+    title: '',
+    status: false,
+  },
+  modalItem: {
     id: 0,
     description: '',
     title: '',
@@ -32,21 +39,17 @@ const todosSlice = createSlice({
       state.todos[state.todos.findIndex((todo) => todo.id === action.payload)].status =
         !state.todos[state.todos.findIndex((todo) => todo.id === action.payload)].status
     }),
-    showModal: ((state, action) => {
-      state.showModal = action.payload
-    }),
   }
 })
 const {
   reducer: todosReducer,
-  actions: {getTodos, addTodo, showModal, changeStatus}
+  actions: {getTodos, addTodo, changeStatus,}
 } = todosSlice
 
 const todosActions = {
   getTodos,
   addTodo,
-  showModal,
-  changeStatus
+  changeStatus,
 }
 
 export {todosReducer, todosActions, todosSlice}

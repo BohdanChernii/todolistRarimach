@@ -1,25 +1,26 @@
 import React from 'react';
 
-import Modal from "../Modal";
-
 import {ITodo} from "../../interfaces";
 
-import {useAppDispatch, useAppSelector} from "../../hooks/redux.hook";
+import {useAppDispatch} from "../../hooks/redux.hook";
 
 import {todosActions} from "../../redux/slices/todos.slice";
+import {useNavigate} from "react-router";
 
 const TodosRow = ({id, description, title, status}: ITodo) => {
-  const {showModal} = useAppSelector(state => state.todosReducer)
   const dispatch = useAppDispatch()
+  const navigate = useNavigate()
 
   const handleChange = () => {
     dispatch(todosActions.changeStatus(id))
-    dispatch(todosActions.showModal(false))
+    navigate('/')
   }
 
+  const onClick = () => {
+    navigate('/modal', {state: {title, description, status}})
+  }
   return (
-    <>
-      <div className='todos__row' onClick={() =>dispatch(todosActions.showModal(true))}>
+      <div className='todos__row' onClick={() => onClick()}>
         <p className='todos__row-item'>{id}</p>
         <p className='todos__row-item'>{title}</p>
         <p className='todos__row-item'>{description}</p>
@@ -31,8 +32,6 @@ const TodosRow = ({id, description, title, status}: ITodo) => {
           />
         </div>
       </div>
-      {showModal ? <Modal description={description} title={title} status={status}/> : null}
-    </>
   );
 };
 
