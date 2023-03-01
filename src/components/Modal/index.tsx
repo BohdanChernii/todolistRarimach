@@ -1,18 +1,13 @@
 import React from 'react';
 
-import {useAppDispatch} from "../../hooks/redux.hook";
-
-import {todosActions} from "../../redux/slices/todos.slice";
-
-import {ITodo} from "../../interfaces";
-
-import './modal.scss'
 import {useLocation, useNavigate} from "react-router";
 
+import './modal.scss'
+
 const Modal = () => {
-  const dispatch = useAppDispatch()
   const location = useLocation()
   const navigate = useNavigate()
+
   const onClose = () => {
     navigate('/')
   }
