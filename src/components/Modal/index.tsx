@@ -1,10 +1,10 @@
-import React from 'react';
+import React, {FC} from 'react';
 
 import {useLocation, useNavigate} from "react-router";
 
 import './modal.scss'
 
-const Modal = () => {
+const Modal:FC = () => {
   const location = useLocation()
   const navigate = useNavigate()
 

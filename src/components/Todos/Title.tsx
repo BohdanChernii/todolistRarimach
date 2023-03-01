@@ -1,6 +1,6 @@
-import React from 'react';
+import React, {FC} from 'react';
 
-const Title = () => {
+const Title:FC = () => {
   return (
     <div className="todos__title">
       <p className="todos__title-item">ID</p>

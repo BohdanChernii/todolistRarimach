@@ -1,4 +1,4 @@
-import React, {FormEvent, useState} from 'react';
+import React, {FC, FormEvent, useState} from 'react';
 
 import {useAppDispatch} from "../../hooks/redux.hook";
 
@@ -6,7 +6,7 @@ import {todosActions} from "../../redux/slices/todos.slice";
 
 import './form.scss'
 
-const Form = () => {
+const Form:FC = () => {
   const [title, setTitle] = useState<string>('')
   const [description, setDescription] = useState<string>('')
   const dispatch = useAppDispatch()

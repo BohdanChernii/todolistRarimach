@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {FC} from 'react';
 
 import Title from "./Title";
 
@@ -10,7 +10,7 @@ import {Outlet} from "react-router";
 
 import './todos.scss'
 
-const Todos = () => {
+const Todos: FC = () => {
   const {todos} = useAppSelector(state => state.todosReducer)
 
   console.log(todos);
